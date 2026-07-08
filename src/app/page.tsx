@@ -231,13 +231,13 @@ export default function SmartDashboardPage() {
         style={{ background: 'linear-gradient(135deg, var(--grad-from), var(--grad-to))' }}
       >
         <div className="space-y-0.5">
-          <span className="text-[10px] font-bold bg-white/20 px-2.5 py-0.5 rounded-full backdrop-blur-md">
+          <span className="text-[10px] font-bold bg-theme-surface/20 px-2.5 py-0.5 rounded-full backdrop-blur-md">
             {new Date().toLocaleDateString('ko-KR')}
           </span>
           <h1 className="text-xl font-black tracking-tight pt-1">반가워, StudyMate! {activeTheme.emoji}</h1>
           <p className="text-[11px] opacity-90">원하는 몰입 환경을 셋팅하고 달려보자!</p>
         </div>
-        <div className="p-3 bg-white/10 rounded-xl backdrop-blur-sm">
+        <div className="p-3 bg-theme-surface/10 rounded-xl backdrop-blur-sm">
           <Flame className="w-6 h-6 text-yellow-300 fill-yellow-300 animate-pulse" />
         </div>
       </div>
@@ -292,13 +292,13 @@ export default function SmartDashboardPage() {
         className="border rounded-2xl p-4 flex items-center gap-3 transition-colors duration-300"
         style={{ backgroundColor: 'var(--primary-light)', borderColor: 'var(--border-color)' }}
       >
-        <div className="p-2.5 bg-white rounded-xl shadow-sm" style={{ color: 'var(--primary)' }}>
+        <div className="p-2.5 bg-theme-surface rounded-xl shadow-sm" style={{ color: 'var(--primary)' }}>
           <CalendarRange className="w-4.5 h-4.5" />
         </div>
         <div className="flex-1">
           <span className="text-[10px] font-bold block" style={{ color: 'var(--text-muted)' }}>실시간 NEIS 학사일정 검증</span>
           {isLoadingSchedule ? (
-            <p className="text-xs font-medium animate-pulse text-gray-500">교육청에서 오늘의 학학사일정을 수신하고 있습니다...</p>
+            <p className="text-xs font-medium animate-pulse text-theme-muted">교육청에서 오늘의 학학사일정을 수신하고 있습니다...</p>
           ) : mainDDay !== null ? (
             <p className="text-xs font-bold mt-0.5" style={{ color: 'var(--text-main)' }}>
               가장 임박한 <span style={{ color: 'var(--primary-dark)' }}>{mainEventName}</span>이 약 <span className="font-black text-sm" style={{ color: 'var(--primary-dark)' }}>{mainDDay}일</span> 남았습니다!
@@ -343,7 +343,7 @@ export default function SmartDashboardPage() {
           </button>
           <button 
             onClick={() => { setTime(0); setIsRunning(false); }}
-            className="bg-gray-100 text-gray-500 font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-1 active:scale-[0.97] transition-transform"
+            className="bg-gray-100 text-theme-muted font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-1 active:scale-[0.97] transition-transform"
           >
             <RotateCcw className="w-3.5 h-3.5" /> 초기화
           </button>
@@ -357,7 +357,7 @@ export default function SmartDashboardPage() {
       >
         <div>
           <div className="flex items-center gap-1">
-            <span className="text-[9px] bg-white/20 px-2 py-0.5 rounded font-black tracking-wider">
+            <span className="text-[9px] bg-theme-surface/20 px-2 py-0.5 rounded font-black tracking-wider">
               AI STUDY UNIVERSE
             </span>
             <Sparkles className="w-3.5 h-3.5 text-yellow-300 fill-yellow-300" />
@@ -369,7 +369,7 @@ export default function SmartDashboardPage() {
         </div>
         <button 
           onClick={() => window.location.href = '/quiz'}
-          className="w-full bg-white font-black py-3 rounded-xl text-xs flex items-center justify-center gap-1 active:scale-[0.97] transition-transform shadow-md"
+          className="w-full bg-theme-surface font-black py-3 rounded-xl text-xs flex items-center justify-center gap-1 active:scale-[0.97] transition-transform shadow-md"
           style={{ color: '#2d3436' }}
         >
           시험장 입장하기 <ArrowRight className="w-4 h-4" />

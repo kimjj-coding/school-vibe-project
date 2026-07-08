@@ -84,16 +84,16 @@ export default function SchoolInfoPage() {
   }, [selectedClass]);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col font-sans text-gray-900 pb-20">
+    <div className="min-h-screen bg-theme-bg flex flex-col font-sans text-theme-text pb-20">
       <main className="flex-1 max-w-md mx-auto px-4 py-6 w-full space-y-5">
         
         <div className="py-2">
-          <h1 className="text-xl font-black text-gray-900 tracking-tight">🏫 실시간 우리 학교 정보</h1>
-          <p className="text-xs text-gray-500 mt-0.5">경기도 남양주 풍양중학교 고유 시스템 연동</p>
+          <h1 className="text-xl font-black text-theme-text tracking-tight">🏫 실시간 우리 학교 정보</h1>
+          <p className="text-xs text-theme-muted mt-0.5">경기도 남양주 풍양중학교 고유 시스템 연동</p>
         </div>
 
         {/* 1. 오늘의 급식 정보 */}
-        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+        <div className="bg-theme-surface rounded-2xl p-5 border border-gray-100 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-bold text-[14px] flex items-center gap-2 text-gray-800">
               <Utensils className="w-4.5 h-4.5 text-orange-500" /> 오늘의 맛있는 중식 메뉴
@@ -123,12 +123,12 @@ export default function SchoolInfoPage() {
               )}
             </div>
           ) : (
-            <div className="bg-gray-50 rounded-xl p-6 text-center text-xs text-gray-400 border border-gray-100">⚠️ 급식 정보가 존재하지 않습니다.</div>
+            <div className="bg-theme-bg rounded-xl p-6 text-center text-xs text-gray-400 border border-gray-100">⚠️ 급식 정보가 존재하지 않습니다.</div>
           )}
         </div>
 
         {/* 2. 오늘 학교 시간표 */}
-        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+        <div className="bg-theme-surface rounded-2xl p-5 border border-gray-100 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-bold text-[14px] flex items-center gap-2 text-gray-800">
               <BookOpenCheck className="w-4.5 h-4.5 text-purple-500" /> 교시별 정규 시간표
@@ -153,12 +153,12 @@ export default function SchoolInfoPage() {
               ))}
             </div>
           ) : (
-            <div className="bg-gray-50 rounded-xl p-6 text-center text-xs text-gray-400 border border-gray-100">💤 오늘은 시간표 배정이 없는 날입니다.</div>
+            <div className="bg-theme-bg rounded-xl p-6 text-center text-xs text-gray-400 border border-gray-100">💤 오늘은 시간표 배정이 없는 날입니다.</div>
           )}
         </div>
 
         {/* 3. 전체 실시간 학사일정 */}
-        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+        <div className="bg-theme-surface rounded-2xl p-5 border border-gray-100 shadow-sm">
           <h2 className="font-bold text-[14px] flex items-center gap-2 text-gray-800 mb-4">
             <Calendar className="w-4.5 h-4.5 text-red-500" /> 다가오는 주요 실시간 학사 일정
           </h2>
@@ -167,7 +167,7 @@ export default function SchoolInfoPage() {
               schedules.slice(0, 4).map((item, index) => {
                 const dday = calculateDDay(item.eventDate);
                 return (
-                  <div key={index} className="flex items-center justify-between border border-gray-100 p-3 rounded-xl bg-gray-50/50">
+                  <div key={index} className="flex items-center justify-between border border-gray-100 p-3 rounded-xl bg-theme-bg">
                     <span className="text-xs font-bold text-gray-700">{item.eventName}</span>
                     <span className="text-xs font-black text-blue-600">
                       {dday > 0 ? `D - ${dday}` : dday === 0 ? 'D-Day 🎉' : '진행 중'}
@@ -176,7 +176,7 @@ export default function SchoolInfoPage() {
                 );
               })
             ) : (
-              <div className="bg-gray-50 rounded-xl p-4 text-center text-xs text-gray-400 border border-gray-100">가까운 학사 일정이 없습니다.</div>
+              <div className="bg-theme-bg rounded-xl p-4 text-center text-xs text-gray-400 border border-gray-100">가까운 학사 일정이 없습니다.</div>
             )}
           </div>
         </div>
