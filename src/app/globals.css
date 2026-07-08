@@ -1,73 +1,68 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* ========================================================
-   1. 5종 테마별 변수 설정 (Zustand data-theme 완벽 대응)
-   ======================================================== */
+/* 💡 Tailwind v4 공식 테마 연동 문법 */
+@theme inline {
+  --color-theme-bg: var(--bg-color);
+  --color-theme-surface: var(--surface-color);
+  --color-theme-primary: var(--primary-color);
+  --color-theme-text: var(--text-color);
+  --color-theme-muted: var(--text-muted);
+  --color-theme-border: var(--border-color);
+}
 
-/* 기본 블루 테마 */
-:root, :root[data-theme="blue"] {
+/* 1. 기본 블루 테마 */
+:root, :root[data-theme="light"], :root[data-theme="blue"] {
   --bg-color: #f9fafb;
   --surface-color: #ffffff;
   --primary-color: #3b82f6;
-  --secondary-color: #4f46e5;
   --text-color: #111827;
   --text-muted: #6b7280;
   --border-color: #e5e7eb;
 }
 
-/* 외계인 테마 (디렉터님 픽) */
+/* 2. 외계인 테마 (디렉터님 시그니처) */
 :root[data-theme="alien"] {
   --bg-color: #020617;
   --surface-color: #0f172a;
   --primary-color: #22c55e;
-  --secondary-color: #84cc16;
   --text-color: #f8fafc;
   --text-muted: #94a3b8;
   --border-color: #1e293b;
 }
 
-/* 벚꽃 테마 */
+/* 3. 벚꽃 테마 */
 :root[data-theme="sakura"] {
   --bg-color: #fdf2f8;
   --surface-color: #ffffff;
   --primary-color: #f43f5e;
-  --secondary-color: #fb7185;
   --text-color: #4c1d95;
   --text-muted: #9f1239;
   --border-color: #fce7f3;
 }
 
-/* 단풍 테마 */
+/* 4. 단풍 테마 */
 :root[data-theme="autumn"] {
   --bg-color: #fff7ed;
   --surface-color: #ffffff;
   --primary-color: #ea580c;
-  --secondary-color: #c2410c;
   --text-color: #431407;
   --text-muted: #9a3412;
   --border-color: #ffedd5;
 }
 
-/* 스노우 테마 */
+/* 5. 스노우 테마 */
 :root[data-theme="snow"] {
   --bg-color: #f0fdfa;
   --surface-color: #ffffff;
   --primary-color: #06b6d4;
-  --secondary-color: #0891b2;
   --text-color: #164e63;
   --text-muted: #155e75;
   --border-color: #ccfbf1;
 }
 
-/* ========================================================
-   2. 설정 파일 없이 바로 작동하는 초강력 시맨틱 클래스 강제 주입
-   ======================================================== */
-.bg-theme-bg { background-color: var(--bg-color) !important; }
-.bg-theme-surface { background-color: var(--surface-color) !important; }
-.text-theme-text { color: var(--text-color) !important; }
-.text-theme-muted { color: var(--text-muted) !important; }
-.bg-theme-primary { background-color: var(--primary-color) !important; }
-.text-theme-primary { color: var(--primary-color) !important; }
-.border-theme-border { border-color: var(--border-color) !important; }
+/* 가로 늘어짐 방지 (폭주 제어) */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
