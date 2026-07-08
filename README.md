@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 프로젝트명: StudyMate (에듀테크 웹 애플리케이션)
+- **현재 시점:** 2026년 7월 8일 (학기말 고사가 막 끝난 여름 시즌)
+- **주요 타겟 유저:** 경기도 남양주 풍양중학교 학생 (현재 2학년 1반 타겟팅)
+- **핵심 기술 스택:** Next.js (App Router), TypeScript, Tailwind CSS, Lucide React, 나이스(NEIS) Open API, Gemini API
 
-## Getting Started
+---
 
-First, run the development server:
+## 📌 1. 현재까지 완료된 핵심 아키텍처 및 기능
+우리는 **[미래 지향적 확장성 헌법]**을 바탕으로 코드를 설계했습니다. 특정 과목이나 학교 정보가 로직 내부에 하드코딩되지 않고, 설정 데이터 배열을 동적으로 순회하여 확장성이 극대화된 상태입니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **실전 시험 대비 모드 (25제 퀴즈 엔진)**
+   - 대단원/중단원을 체크박스로 여러 개 동시 선택(Multi-Select)하면 믹스하여 출제하는 기능.
+   - 객관식 20문항 + 문장형 서술형 5문항 통합 고사장 뷰 구현 완료.
+   - 과학 화학식 하첨자(H₂O) 및 코딩 문제 들여쓰기가 깨지지 않는 가시성 패치 전면 적용.
+   - **백엔드 파이프라인 (`/api/gemini`):** `gemini-2.0-flash-thinking-exp` 모델 기반으로, 객체와 배열 규격을 완벽히 분리 파싱하는 방화벽 및 3회 자동 재시도(Exponential Backoff) 완료.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **서술형 AI 정밀 채점관 및 1:1 첨삭 엔진**
+   - 학생이 `<textarea>`에 2~3문장으로 작성한 답안을 선생님 기준의 모범 답안 및 필수 키워드(루브릭 3개)와 대조하여 채점.
+   - **백엔드 파이프라인 (`/api/grade-essay`):** 문장의 표현이나 어순이 달라도 핵심 맥락이 통하면 부분 점수(5점 만점)를 부여하고, 누락된 키워드를 정확히 짚어내는 깐깐한 교사 피드백 JSON 구조 완성.
+   - 프론트엔드에서 5개 문항을 `Promise.all`로 병렬 호출하여 초고속 채점 후 100점 만점 성적표로 환산 출력.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **실시간 나이스(NEIS) API 연동 대시보드 (`/api/neis`)
+   - **날짜 타임존 버그 완벽 박멸:** KST 한국 표준시 기준의 오늘 날짜(`YYYYMMDD`)를 안전하게 추출하여 날짜가 내일로 튕기는 버그 수정 완료.
+   - **진짜 학교 정보 실시간 추적:** 7자리 코드를 때려 맞추지 않고 나이스 `schoolInfo` API를 먼저 찔러 '남양주 풍양중학교(중학교 유형, 코드: 7530851)'를 실시간 역추적하여 바인딩 성공.
+   - **급식 정제:** 식단 데이터 중 '중식'만 귀신같이 찾아내어 알레르기 유발 숫자와 `#` 기호를 완전히 걷어낸 순수 반찬 리스트 출력.
+   - **시간표 강제 매핑:** 2학년 1반 인자를 나이스 시간표 API(`misTimetable`)에 정상 주입하여 교시별 과목 리스트 출력 바인딩 완료.
+   - **계절 맞춤 학사일정 D-Day:** 7월 한여름 시점에 맞게 [여름방학식] 및 [2학기 개학식] 디데이 카운터 현실화 완료.
+   - 공부 스톱워치 켜놓고 딴짓(탭 이동, 화면 가림)하면 즉시 적발하는 안티치트 감지 모달 탑재.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛑 2. 다음 작업자가 이어서 고도화해야 할 미션
+- 현재 백엔드 라우터들과 프론트엔드 `page.tsx` 코드들은 완벽히 `No problems` 빌드 클린 상태이다.
+- 다음 작업 시 이 `README.md`를 기반으로 흐름을 파악하고, 디렉터님이 코드스페이스에서 다운로드한 실제 소스 코드 파일(API route 파일들과 quiz page 파일)을 건네주면 그 위에 이어서 기능 고도화 및 UI 커스텀 작업을 진행할 것. 중간 생략(`//...`)은 절대 금지한다.
