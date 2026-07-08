@@ -13,13 +13,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // 🔥 프로의 3중 잠금 장치: 클래스 + 데이터속성 + 브라우저 엔진 스타일 강제 고정
-    <html lang="ko" className="light" data-theme="light" style={{ colorScheme: 'light' }}>
-      <body className="bg-white text-gray-900 min-h-screen pb-20 font-sans antialiased">
-        <main className="max-w-md mx-auto min-h-screen bg-white">
+    <html lang="ko">
+      <body 
+        className="min-h-screen font-sans antialiased transition-colors duration-300"
+        style={{ backgroundColor: 'var(--bg-app)' }}
+      >
+        {/* 절대 터지지 않는 강철 가두리 모바일 프레임 */}
+        <main 
+          className="max-w-md mx-auto min-h-screen relative pb-24 shadow-[0_0_30px_rgba(0,0,0,0.03)] transition-colors duration-300"
+          style={{ backgroundColor: 'var(--bg-card)' }}
+        >
           {children}
+          
+          {/* 하단 네비게이션 바 고정 */}
+          <BottomNav />
         </main>
-        <BottomNav />
       </body>
     </html>
   );

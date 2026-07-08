@@ -1,17 +1,81 @@
-@import "tailwindcss";
+@import "tailwindcss"; /* 💡 Tailwind v4 환경인 경우 이 줄을 유지하세요 */
 
-:root {
-  --background: #ffffff !important;
-  --foreground: #171717 !important;
-  color-scheme: light !important;
+/* 💡 만약 구버전 Tailwind v3 환경이라 빌드 에러가 난다면 위 @import를 지우고 아래 3줄의 주석을 푸세요!
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/
+
+:root, [data-theme="default"] {
+  --bg-app: #f8fafc;           /* 데스크톱 모니터용 바깥 여백 배경 */
+  --bg-card: #ffffff;          /* 모바일 메인 뷰포트 및 카드 배경 */
+  --bg-sub: #f8fafc;           /* 타이머/급식/시간표 내부 박스 배경 */
+  --primary: #2563eb;          /* 시그니처 블루 */
+  --primary-dark: #1d4ed8;     
+  --primary-light: #eff6ff;    
+  --text-main: #0f172a;        /* 메인 텍스트 */
+  --text-muted: #64748b;       /* 서브 설명글 */
+  --grad-from: #3b82f6;        
+  --grad-to: #4f46e5;          
+  --border-color: #e2e8f0;     /* 테두리 선 색상 */
 }
 
-body {
-  background-color: #ffffff !important;
-  color: #171717 !important;
+/* 🌸 기획자님 전용: 톤앤매너 명도/채도 조율 딥 핑크 테마 */
+[data-theme="cherry"] {
+  --bg-app: #fff5f5;
+  --bg-card: #ffffff;
+  --bg-sub: #fff0f2;           /* 은은한 벚꽃 속살 채도 색상 */
+  --primary: #ff7675;          /* 너무 튀지 않는 세련된 청춘 핑크 */
+  --primary-dark: #d63031;     /* 가독성을 확보한 가을 딥 로즈 */
+  --primary-light: #ffebee;    
+  --text-main: #4a1525;        /* 고급스러운 초콜릿 버건디 */
+  --text-muted: #e84393;       /* 탭 내부 하이라이트 핑크 */
+  --grad-from: #ff7675;
+  --grad-to: #fd79a8;
+  --border-color: #fecdd3;     /* 연한 핑크 테두리 */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+/* 👽 대천재 힙스터 외계인 테마 (다크) */
+[data-theme="alien"] {
+  --bg-app: #0b0f19;
+  --bg-card: #161f30;
+  --bg-sub: #0f172a;
+  --primary: #39ff14;          /* 사이버 네온 매트릭스 그린 */
+  --primary-dark: #00cc44;
+  --primary-light: rgba(57, 255, 20, 0.08);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --grad-from: #1e293b;
+  --grad-to: #111827;
+  --border-color: #1e293b;
+}
+
+/* 🍁 감성 가을 단풍 테마 */
+[data-theme="maple"] {
+  --bg-app: #fdfaf2;
+  --bg-card: #ffffff;
+  --bg-sub: #fdf2e9;
+  --primary: #e67e22;          /* 단풍 딥 오렌지 */
+  --primary-dark: #d35400;
+  --primary-light: #fdf2e9;
+  --text-main: #431407;
+  --text-muted: #ba5d12;
+  --grad-from: #e67e22;
+  --grad-to: #f39c12;
+  --border-color: #fed7aa;
+}
+
+/* ❄️ 겨울 설국 스노우 테마 */
+[data-theme="snow"] {
+  --bg-app: #f0f4f8;
+  --bg-card: #ffffff;
+  --bg-sub: #e7f5ff;
+  --primary: #4dabf7;          /* 영롱한 얼음 스카이 */
+  --primary-dark: #228be6;
+  --primary-light: #e7f5ff;
+  --text-main: #0c2340;
+  --text-muted: #1c7ed6;
+  --grad-from: #74c0fc;
+  --grad-to: #364fc7;
+  --border-color: #d0ebff;
 }

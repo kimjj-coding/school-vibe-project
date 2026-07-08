@@ -1,25 +1,26 @@
-'use client'; // Next.js App Router에서 클라이언트 상태/이벤트를 쓰기 위한 선언
+'use client'; 
 
 import { useEffect, useState } from 'react';
 import { Timer, Play, Pause, RotateCcw, AlertCircle } from 'lucide-react';
-import { useTimerStore } from '@/store/timerStore';
+// 💡 메인 뇌의 수정: 길 잃은 경로를 '상대 경로(점 3개)'로 확실하게 묶어줌!
+import { useTimerStore } from '@/store/TimerStore';
 
 export default function TimerCard() {
   const { time, isRunning, start, pause, reset, tick } = useTimerStore();
   const [showWarning, setShowWarning] = useState(false);
 
-  // 타이머 작동 로직
+  // 💡 메인 뇌의 수정: NodeJS 서버 에러를 없애기 위해 완벽한 브라우저 타이머(window.setInterval)로 교체!
   useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
+    let interval: number | null = null;
     if (isRunning) {
-      interval = setInterval(() => {
+      interval = window.setInterval(() => {
         tick();
       }, 1000);
-    } else if (interval) {
-      clearInterval(interval);
+    } else if (interval !== null) {
+      window.clearInterval(interval);
     }
     return () => {
-      if (interval) clearInterval(interval);
+      if (interval !== null) window.clearInterval(interval);
     };
   }, [isRunning, tick]);
 
@@ -97,7 +98,6 @@ export default function TimerCard() {
         </div>
       </div>
 
-      {/* 커스텀 경고 모달 (alert 대체) */}
       {showWarning && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl p-6 shadow-2xl max-w-sm w-full animate-in fade-in zoom-in duration-200">
